@@ -61,6 +61,12 @@ odir_fixed/
 # Jupyter Notebook
 .ipynb_checkpoints
 .jupyter
+# Exclude Jupyter notebooks from tracking (can be large)
+fyp-final-retina-hierarchical-pipeline(final-version).ipynb
+
+# Project Documentation & Design Files (exclude from repo)
+Web App Work Flow Requirements.docx
+ai_eye_care_system_flow.svg
 
 # Temporary files
 *.tmp
@@ -116,3 +122,7 @@ $RECYCLE.BIN/
 # Local development
 .local/
 local_settings.py
+
+# NOTE: start.bat and start.sh ARE COMMITTED
+# These startup scripts are helpful for users to run the application
+# They are NOT in gitignore so others can easily start the project
