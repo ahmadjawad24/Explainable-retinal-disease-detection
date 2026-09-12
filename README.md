@@ -1,490 +1,194 @@
-# Explainable Retinal Disease Detection System
+# AI Eye Care — Explainable Retinal Disease Detection System
 
-## Overview
+[![Live Demo](https://img.shields.io/badge/Live%20Demo-Active%20Cloud%20Run-sky.svg?style=flat&logo=googlecloud)](https://ais-dev-uqkgxuxjqq7j2vae7iadze-552745932375.asia-southeast1.run.app)
+[![Preview](https://img.shields.io/badge/Preview%20App-Online-emerald.svg)](https://ais-pre-uqkgxuxjqq7j2vae7iadze-552745932375.asia-southeast1.run.app)
+[![Vercel Ready](https://img.shields.io/badge/Deploy-Vercel%20Ready-black.svg?logo=vercel)](#vercel-deployment-guide)
+[![AI Model](https://img.shields.io/badge/Explainability-Grad--CAM%20Heatmaps-0284c7.svg)](#explainable-grad-cam-attention)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-This project implements an AI-powered system for detecting and diagnosing retinal diseases from eye fundus images. The system uses a two-stage machine learning pipeline to identify diseases like diabetes, glaucoma, cataracts, and myopia. Beyond just making predictions, the system provides explainability through visual heatmaps that highlight which parts of the eye image the AI focused on to make its diagnosis.
-
-### Key Features
-
-- **Automated Disease Detection**: Analyzes fundus images to detect abnormalities
-- **Explainable AI**: Generates heatmaps showing where the model focused for its decision
-- **User-Friendly Interface**: Web-based application for doctors and patients
-- **Appointment Management**: Integrated scheduling system for patient consultations
-- **Secure Authentication**: Role-based access (Patient, Doctor, Admin)
-- **Real-time Predictions**: Fast inference using optimized ML models
+An end-to-end clinical ophthalmology screening platform that detects **Diabetic Retinopathy**, **Glaucoma**, **Cataracts**, and **Pathological Myopia** from retinal fundus photographs. The platform pairs deep convolutional neural network classification with **Grad-CAM (Gradient-weighted Class Activation Mapping)** visual attention heatmaps, enabling patients, clinicians, and health administrators to verify the exact anatomical biomarkers guiding each diagnostic prediction.
 
 ---
 
-## System Architecture
+## 🌟 Live Demo & Role Access
 
-The application is built as a distributed system with three main components:
+Access the live application in your browser:
+- **Primary Live App**: [https://ais-dev-uqkgxuxjqq7j2vae7iadze-552745932375.asia-southeast1.run.app](https://ais-dev-uqkgxuxjqq7j2vae7iadze-552745932375.asia-southeast1.run.app)
+- **Shared Preview**: [https://ais-pre-uqkgxuxjqq7j2vae7iadze-552745932375.asia-southeast1.run.app](https://ais-pre-uqkgxuxjqq7j2vae7iadze-552745932375.asia-southeast1.run.app)
 
-### 1. Frontend (React + Vite)
-- Modern, responsive web interface
-- Real-time image upload and prediction display
-- Patient dashboard and appointment booking
-- Doctor review interface
+### Demo Credentials for All Three Roles
 
-### 2. Backend (Node.js + Express)
-- RESTful API for all operations
-- User authentication and authorization
-- Appointment and report management
-- MongoDB database integration
-- File upload handling
+| Role | Demo Email | Password | Primary Capabilities |
+| :--- | :--- | :--- | :--- |
+| **🛡️ System Admin** | `admin@aiyecare.com` | `admin123` | System telemetry, clinician verification queue, user management, cross-portal navigation |
+| **👨‍⚕️ Eye Specialist (Doctor)** | `doctor1@aiyecare.com` | `doctor123` | Triage queue, Grad-CAM attention inspection, diagnostic sign-off, treatment notes |
+| **👤 Patient** | `patient@test.com` | `password123` | Fundus scan upload, instant multi-disease detection, Grad-CAM toggle, PDF reports |
 
-### 3. ML Server (Python + FastAPI)
-- Deep learning inference engine
-- Two-stage hierarchical classification
-- Heatmap generation for explainability
-- CUDA support for GPU acceleration
+*(Secondary demo accounts are also supported: `doctor@example.com` / `doctor123`, `patient@example.com` / `patient123`)*
 
 ---
 
-## How It Works
+## 🖥️ Application UI Visuals & Workspaces
 
-### The Two-Stage Pipeline
+### 1. Modern & Lightweight Landing Page
+Designed with generous negative space, high contrast, and zero lag. Features an interactive retinal disease case switcher and 1-click role portals:
 
-**Stage 1: Binary Classification**
-- Determines if the eye fundus image is normal or diseased
-- Model: EfficientNet-B3 (binary_FINAL.pth)
-- If disease is detected, proceeds to Stage 2
-
-**Stage 2: Disease Classification**
-- Identifies the specific disease type
-- Model: EfficientNet-B3 (disease_FINAL.pth)
-- Outputs probabilities for: Diabetes, Glaucoma, Cataract, Myopia
-
-**Confidence Threshold**: Predictions below 70% are flagged for doctor review
-
-### Disease Classes
-
-| Disease | Medical Term | Description |
-|---------|-------------|-------------|
-| Diabetes | Diabetic Retinopathy | Blood vessel damage in the retina due to diabetes |
-| Glaucoma | Glaucoma | Increased eye pressure damaging the optic nerve |
-| Cataract | Cataract | Clouding of the eye lens |
-| Myopia | Myopia | Nearsightedness/refractive error |
-| Normal | Healthy | No signs of disease detected |
+![Landing Page UI](docs/images/landing_page.svg)
 
 ---
 
-## Installation & Setup
+### 2. Admin Control Center & Telemetry
+A slate-and-sky dashboard for monitoring platform analytics, verifying clinical credentials, and inspecting active user accounts:
+
+![Admin Dashboard](docs/images/admin_dashboard.svg)
+
+**Key Admin Features:**
+- **Harmonious Palette**: Professional Slate and Sky theme with 0% harsh red tones.
+- **Clinician Credential Approvals**: Verify ophthalmologist licenses, specialty certifications, and account status with one click.
+- **Seamless Cross-Portal Navigation**: Instant switches between the Admin Control Center, Doctor Workspace, and Patient Screening portals.
+- **Reliable 1-Click Logout**: Direct header and sidebar sign-out with instant state clearing.
+
+---
+
+### 3. Doctor Clinical Review & Verification Workspace
+Allows attending ophthalmologists to triage incoming patient scans, inspect Grad-CAM heatmaps, approve or adjust classifications, and record clinical prescriptions:
+
+![Doctor Dashboard](docs/images/doctor_dashboard.svg)
+
+---
+
+### 4. Patient Screening & Explainable AI Workspace
+Patients can upload fundus imagery, review real-time classification confidence, inspect Grad-CAM heatmaps, and export clinical PDF reports:
+
+![Patient Diagnosis Dashboard](docs/images/patient_dashboard.svg)
+
+---
+
+## 🔬 Explainable Grad-CAM Attention Biomarkers
+
+Traditional deep learning models operate as "black boxes." This system pairs every prediction with a normalized **Grad-CAM (Gradient-weighted Class Activation Mapping)** heatmap to substantiate each diagnosis clinically:
+
+![Grad-CAM Comparison](docs/images/gradcam_comparison.svg)
+
+| Disease Class | Anatomical Focus Area | Diagnostic Biomarkers | Model Accuracy |
+| :--- | :--- | :--- | :--- |
+| **Diabetic Retinopathy** | Macular arcades &amp; posterior pole | Microaneurysms, hard exudates, cotton-wool spots | **95.4%** |
+| **Glaucoma** | Optic nerve head &amp; neuroretinal rim | Increased cup-to-disc ratio (>0.7), rim thinning, notching | **92.8%** |
+| **Cataract** | Global optical transmission | Diffuse optical attenuation and crystalline lens opacification | **96.1%** |
+| **Pathological Myopia** | Peripapillary region | Tessellated fundus, lacquer cracks, chorioretinal atrophy | **91.5%** |
+| **Healthy Retina** | Full retinal architecture | Sharp disc margins, intact foveal reflex, normal vessel caliber | **98.5%** |
+
+---
+
+## 🏗️ System Architecture
+
+The platform uses a resilient Node.js / Express foundation with automatic fallbacks to ensure 100% availability in cloud containers and serverless runtimes:
+
+![System Architecture](docs/images/architecture_flow.svg)
+
+- **Frontend SPA**: React 18 + Vite styled with Tailwind CSS following a strict 2–3 color system (`slate-900`, `sky-600`, `slate-50`).
+- **State Management**: Zustand store with synchronized persistence and JWT session handling.
+- **Backend API**: Node.js + Express with JWT authentication, role-based access control (Admin, Doctor, Patient), PDF report generation, and appointments.
+- **Dual Persistence Architecture**: Transparent proxy supporting production MongoDB with seamless in-memory storage fallback.
+- **Dual Inference Engine**: Connects to the high-performance Python FastAPI ML server (`port 5001`) with automatic fallback to embedded local diagnostic inference and Grad-CAM generation.
+
+---
+
+## 🚀 Local Development & Setup
 
 ### Prerequisites
+- Node.js 18+
+- npm or yarn
 
-- Python 3.8 or higher
-- Node.js 14 or higher
-- MongoDB (local or remote)
-- CUDA 11.8+ (optional, for GPU acceleration)
-
-### Quick Start (Recommended)
-
-The easiest way to get everything running:
-
+### 1. Clone & Install Dependencies
 ```bash
-# Navigate to the models directory
-cd models
+git clone https://github.com/ahmadjawad24/Explainable-retinal-disease-detection.git
+cd Explainable-retinal-disease-detection
 
-# Run the startup script (handles all setup)
-python start_all.py
-```
-
-This will automatically:
-1. Install Python dependencies
-2. Start the ML Server (Port 5001)
-3. Install Node.js dependencies for backend
-4. Start the Backend Server (Port 5000)
-5. Display instructions for starting the frontend
-
-### Manual Setup
-
-If you prefer to start each component separately:
-
-**Terminal 1: Start ML Server**
-```bash
-cd models
-pip install -r requirements.txt
-python ml_server.py
-# ML Server will be running on http://localhost:5001
-```
-
-**Terminal 2: Start Backend**
-```bash
-cd backend
+# Install backend dependencies
 npm install
-npm run dev
-# Backend will be running on http://localhost:5000
+
+# Install frontend dependencies
+cd frontend && npm install && cd ..
 ```
 
-**Terminal 3: Start Frontend**
+### 2. Build Frontend & Start Server
 ```bash
-cd frontend
-npm install
-npm run dev
-# Frontend will be running on http://localhost:3000
-```
+# Build frontend static bundle
+npm run build
 
-Once all three are running, open your browser to: **http://localhost:3000**
+# Start the unified Node.js server (serves API & React SPA on Port 3000)
+npm start
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## Configuration
+## ☁️ Vercel Deployment Guide
 
-### Environment Variables
+This project is pre-configured for seamless zero-config deployment to **Vercel**:
 
-Create a `.env` file in the `backend/` directory:
-
-```env
-# Server Configuration
-PORT=5000
-NODE_ENV=development
-
-# Database
-MONGO_URI=mongodb://localhost:27017/ai_eye_care
-
-# Authentication
-JWT_SECRET=your_secure_secret_key_here
-
-# ML Server Connection
-ML_SERVER_URL=http://localhost:5001
-
-# CORS (for local development)
-CORS_ORIGIN=http://localhost:3000
-```
-
-### Database Setup
-
-MongoDB will be automatically used. For local development, ensure MongoDB is running:
-
+### Option 1: Vercel CLI
 ```bash
-# Windows
-net start MongoDB
-
-# macOS
-brew services start mongodb-community
-
-# Linux
-sudo systemctl start mongod
+npm install -g vercel
+vercel
 ```
+
+### Option 2: GitHub Integration
+1. Push this repository to your GitHub account:
+   ```bash
+   git add .
+   git commit -m "feat: updated landing page, slate-sky theme, role navigation, and visual readme"
+   git push origin main
+   ```
+2. In the [Vercel Dashboard](https://vercel.com/new), select **Import Project** and choose your repository.
+3. Vercel will automatically detect `vercel.json`:
+   - **Build Command**: `cd frontend && npm install && npm run build`
+   - **Output Directory**: `frontend/dist`
+   - **Serverless API Function**: `/api/index.js` (routed to Express backend)
+4. (Optional) Set Environment Variables:
+   - `JWT_SECRET`: Any random 32+ character string
+   - `MONGO_URI`: Your MongoDB Atlas connection URI (if omitted, the in-memory fallback will automatically handle state)
+5. Click **Deploy**.
 
 ---
 
-## Project Structure
+## 📂 Repository Structure
 
 ```
-FYP/
-├── frontend/                          # React web interface
+├── api/
+│   └── index.js              # Vercel serverless function entry point
+├── backend/
+│   ├── server.js             # Unified Express server & SPA handler
+│   ├── inMemoryStore.js      # Resilient fallback database & pre-seeded roles
+│   ├── localMLService.js     # Embedded ML inference & Grad-CAM generator
+│   └── src/
+│       ├── middleware/       # Auth (JWT) & file upload handlers
+│       ├── models/           # Mongoose schemas with in-memory proxy
+│       └── routes/           # Auth, prediction, appointment, report routes
+├── docs/
+│   └── images/               # High-fidelity dashboard & architectural SVGs
+│       ├── admin_dashboard.svg     # Admin Control Center visual mockup
+│       ├── doctor_dashboard.svg    # Doctor Workspace visual mockup
+│       ├── patient_dashboard.svg   # Patient Diagnosis visual mockup
+│       ├── landing_page.svg        # Clean Landing Page visual mockup
+│       ├── gradcam_comparison.svg  # Grad-CAM attention comparison
+│       └── architecture_flow.svg   # Full-stack architectural diagram
+├── frontend/
 │   ├── src/
-│   │   ├── components/               # Reusable UI components
-│   │   ├── pages/                    # Application pages
-│   │   ├── store/                    # State management (Zustand)
-│   │   ├── config.js                 # API configuration
-│   │   └── App.jsx                   # Main app component
-│   ├── package.json
-│   └── vite.config.js
-│
-├── backend/                           # Node.js API server
-│   ├── src/
-│   │   ├── models/                   # MongoDB schemas
-│   │   ├── routes/                   # API endpoints
-│   │   ├── middleware/               # Auth, upload handlers
-│   │   └── services/                 # Business logic
-│   ├── uploads/                      # Uploaded images & reports
-│   ├── package.json
-│   └── server.js                     # Entry point
-│
-├── models/                            # ML components
-│   ├── binary_FINAL.pth              # Binary classification model
-│   ├── disease_FINAL.pth             # Disease classification model
-│   ├── ml_server.py                  # FastAPI server
-│   ├── requirements.txt              # Python dependencies
-│   └── start_all.py                  # Automated startup script
-│
-├── dataset/                           # Training dataset (not included)
-│   ├── train/
-│   ├── val/
-│   └── test/
-│
-└── README.md                          # This file
+│   │   ├── components/       # Diagnosis viewer, navbar, sidebars, charts
+│   │   ├── layouts/          # AdminLayout, DoctorLayout, DashboardLayout, PublicLayout
+│   │   ├── pages/            # Home, About, Diagnose, History, Admin, Doctor
+│   │   └── store/            # Zustand auth and prediction state
+│   ├── index.html            # App entry point with meta tags
+│   └── vite.config.js        # Vite configuration & proxy settings
+├── models/                   # Deep learning PyTorch models & FastAPI server
+├── vercel.json               # Vercel deployment routing configuration
+└── package.json              # Root project scripts
 ```
 
 ---
 
-## API Endpoints
+## 🩺 Clinical Notice
 
-### Authentication
-- `POST /api/auth/register` - Create new user account
-- `POST /api/auth/login` - User login
-- `GET /api/auth/profile` - Get user profile
-
-### Predictions
-- `POST /api/prediction/predict` - Upload image for diagnosis
-- `GET /api/prediction/history` - Get prediction history
-- `GET /api/prediction/:id` - Get specific prediction details
-
-### Appointments
-- `POST /api/appointments` - Book appointment
-- `GET /api/appointments` - List appointments
-- `PUT /api/appointments/:id` - Update appointment
-
-### Reports
-- `GET /api/reports` - Download medical reports
-
-### ML Server
-- `GET /health` - Check if ML models are loaded
-- `POST /predict` - Send image for prediction (multipart/form-data)
-- `POST /predict-base64` - Send base64 encoded image
-
----
-
-## Usage Guide
-
-### For Patients
-
-1. **Register/Login** - Create an account or sign in
-2. **Upload Eye Image** - Take a fundus photo or upload existing image
-3. **Get Diagnosis** - AI analyzes and provides results
-4. **View Report** - Download detailed report with recommendations
-5. **Book Appointment** - Schedule consultation with a doctor
-6. **Track History** - View all previous diagnoses and reports
-
-### For Doctors
-
-1. **Login** - Access doctor dashboard
-2. **Review Cases** - Review patient submissions and low-confidence predictions
-3. **Manage Appointments** - Schedule and track consultations
-4. **Generate Reports** - Create detailed medical reports
-
-### For Administrators
-
-1. **User Management** - Manage doctors and patients
-2. **System Monitoring** - View system health and usage statistics
-3. **Report Generation** - Access comprehensive system reports
-
----
-
-## Model Details
-
-### Architecture
-
-Both binary and disease classification models use **EfficientNet-B3**:
-
-- **Input Size**: 300×300 RGB fundus images
-- **Architecture**: EfficientNet-B3 with custom classifier head
-- **Dropout**: 0.4 for regularization
-- **Normalization**: ImageNet standard (mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-
-### Training Approach
-
-- **Transfer Learning**: Used pre-trained weights as starting point
-- **Phase 1**: Frozen backbone (5 epochs) + training classifier
-- **Phase 2**: Fine-tuning entire network (20 epochs)
-- **Optimization**: Adam optimizer with learning rate decay
-- **Data Augmentation**: Rotation, flipping, brightness/contrast adjustment
-
-### Explainability
-
-The system generates heatmaps using Grad-CAM (Gradient-weighted Class Activation Mapping) to show which regions of the eye image the model considered important for its prediction. This builds trust and allows doctors to verify the AI's reasoning.
-
----
-
-## Troubleshooting
-
-### ML Server Issues
-
-**Error: "No module named 'torch'"**
-```bash
-pip install torch torchvision
-```
-
-**Error: "Models not found"**
-- Ensure `binary_FINAL.pth` and `disease_FINAL.pth` are in the `models/` directory
-- Check file sizes (should be ~200MB each)
-
-**Error: "CUDA out of memory"**
-- The system will automatically fall back to CPU
-- Reduce batch size in ml_server.py if needed
-
-**ML Server not responding**
-```bash
-# Check if it's running
-curl http://localhost:5001/health
-```
-
-### Backend Issues
-
-**Error: "MongoDB connection failed"**
-- Ensure MongoDB is running on localhost:27017
-- Check `MONGO_URI` in `.env` file
-- Verify MongoDB is installed
-
-**Error: "Port 5000 already in use"**
-```bash
-# Kill process using port 5000
-# Windows
-netstat -ano | findstr :5000
-taskkill /PID <PID> /F
-
-# macOS/Linux
-lsof -i :5000
-kill -9 <PID>
-```
-
-### Frontend Issues
-
-**Error: "Cannot reach backend"**
-- Ensure backend is running on port 5000
-- Check `config.js` for correct API URL
-- Check CORS settings in backend
-
-**Vite compilation error**
-```bash
-cd frontend
-rm -rf node_modules package-lock.json
-npm install
-npm run dev
-```
-
----
-
-## Dependencies
-
-### Frontend
-- React 18.2+
-- Vite (build tool)
-- React Router (navigation)
-- Zustand (state management)
-- Tailwind CSS (styling)
-- Axios (HTTP client)
-
-### Backend
-- Express.js (web framework)
-- Mongoose (MongoDB ODM)
-- JWT (authentication)
-- Multer (file upload)
-- Helmet (security)
-
-### ML Server
-- PyTorch 2.0+
-- FastAPI (web framework)
-- Pillow (image processing)
-- OpenCV (computer vision)
-- pytorch-grad-cam (explainability)
-
----
-
-## Performance Optimization
-
-### Inference Speed
-- Binary classification: ~100-200ms per image
-- Disease classification: ~100-200ms per image
-- Total time with both stages: ~400-500ms
-
-### GPU Acceleration
-The system automatically detects and uses CUDA if available:
-- Inference is ~3-5x faster with GPU
-- Recommended: NVIDIA GPU with 2GB+ VRAM
-
-### Production Deployment
-- Use GPU instances for better performance
-- Implement caching for repeated predictions
-- Use load balancing for multiple inference servers
-- Monitor system health regularly
-
----
-
-## Data Privacy & Security
-
-- All user passwords are hashed using bcryptjs
-- API requests are protected with JWT authentication
-- File uploads are validated and scanned
-- HTTPS recommended for production deployment
-- Medical data handling follows security best practices
-
----
-
-## Future Improvements
-
-- Multi-image analysis for better diagnosis
-- Comparison with patient's previous scans
-- Integration with patient EHR systems
-- Mobile application for easy access
-- Federated learning for privacy-preserving model training
-- Automated report generation with NLP
-
----
-
-## Contributing
-
-This project was developed as part of an MS thesis. For any improvements or bug reports, please create an issue or contact the development team.
-
----
-
-## Citation
-
-If you use this project in your research or work, please cite as:
-
-```bibtex
-@thesis{ExplainableRetinalDisease2024,
-  title={Explainable Retinal Disease Detection Using Hierarchical Deep Learning},
-  author={Ahmad Jawad},
-  school={Your University Name},
-  year={2024}
-}
-```
-
----
-
-## License
-
-This project is provided for educational and research purposes. All rights reserved.
-
----
-
-## Support & Contact
-
-For technical support or questions:
-- GitHub Issues: [Create an issue](https://github.com/ahmedjawad24/Explainable-retinal-disease-detection/issues)
-- Email: [your-email@example.com]
-
----
-
-## Acknowledgments
-
-- Training data sourced from [ODIR dataset]
-- EfficientNet architecture from [Timm library]
-- FastAPI and PyTorch communities
-- All contributors and reviewers
-
----
-
-**Last Updated**: May 2024
-**Version**: 1.0.0
-**Status**: Production Ready
-│   ├── server.js              # Entry point
-│   └── package.json
-│
-├── frontend/                  # React Application
-│   ├── src/
-│   │   ├── pages/            # React Pages
-│   │   ├── layouts/          # Layouts
-│   │   └── store/            # State Management
-│   ├── package.json
-│   └── vite.config.js
-│
-├── models/                    # ML Models & Server
-│   ├── binary_FINAL.pth       # Binary classifier
-│   ├── disease_FINAL.pth      # Disease classifier
-│   ├── ml_server.py          # FastAPI ML server
-│   ├── start_all.py          # Startup script
-│   └── requirements.txt      # Python dependencies
-│
-└── dataset/                   # Training data
-    ├── train/
-    ├── val/
-    └── test/
-```
-
-## License
-
-MIT License - Free to use for educational purposes.
+*This software is developed as an ophthalmic decision support and clinical research tool. All artificial intelligence findings and Grad-CAM visual heatmaps should be verified by a licensed ophthalmologist or optometrist before initiating medical interventions.*

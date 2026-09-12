@@ -118,12 +118,12 @@ const AdminUsers = () => {
           </div>
           <p className="text-xs text-blue-700 mt-1">Doctors</p>
         </div>
-        <div className="bg-red-50 rounded-xl p-4 shadow-md border border-red-200">
+        <div className="bg-slate-50 rounded-xl p-4 shadow-md border border-slate-200">
           <div className="flex items-center justify-between">
-            <Shield className="h-6 w-6 text-red-600" />
-            <span className="text-2xl font-bold">{stats.admins}</span>
+            <Shield className="h-6 w-6 text-slate-700" />
+            <span className="text-2xl font-bold text-slate-900">{stats.admins}</span>
           </div>
-          <p className="text-xs text-red-700 mt-1">Admins</p>
+          <p className="text-xs text-slate-700 mt-1 font-semibold">Admins</p>
         </div>
         <div className="bg-yellow-50 rounded-xl p-4 shadow-md border border-yellow-200">
           <div className="flex items-center justify-between">

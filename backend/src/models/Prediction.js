@@ -116,4 +116,22 @@ predictionSchema.index({ status: 1 });
 predictionSchema.index({ 'reviewRequest.sentToDoctorId': 1 });
 predictionSchema.index({ 'reviewRequest.status': 1 });
 
-module.exports = mongoose.model('Prediction', predictionSchema);
+const { PredictionMemory } = require('./inMemoryStore');
+const MongoosePrediction = mongoose.model('Prediction', predictionSchema);
+
+const PredictionProxy = new Proxy(MongoosePrediction, {
+    get(target, prop) {
+        if (mongoose.connection.readyState !== 1) {
+            return PredictionMemory[prop];
+        }
+        return target[prop];
+    },
+    construct(target, args) {
+        if (mongoose.connection.readyState !== 1) {
+            return new PredictionMemory(...args);
+        }
+        return new target(...args);
+    }
+});
+
+module.exports = PredictionProxy;

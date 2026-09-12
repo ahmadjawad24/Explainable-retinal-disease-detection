@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="flowBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="420" fill="url(#flowBg)" rx="16"/>
+
+  <text x="50" y="45" fill="#2dd4bf" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">SYSTEM ARCHITECTURE</text>
+  <text x="50" y="78" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="22" font-weight="bold">Unified Node.js &amp; Vercel Serverless Architecture</text>
+
+  <!-- Step 1 Box: Client SPA -->
+  <rect x="50" y="120" width="260" height="240" rx="14" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="50" y="120" width="260" height="38" rx="14 14 0 0" fill="#0f172a"/>
+  <text x="70" y="144" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Frontend Client (Vite + React)</text>
+  <text x="70" y="185" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Interactive Video Walkthrough</text>
+  <text x="70" y="215" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• 1-Click Demo Logins (Patient/Doctor/Admin)</text>
+  <text x="70" y="245" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Fundus Photo Drag &amp; Drop</text>
+  <text x="70" y="275" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Grad-CAM Thermal Viewer</text>
+  <text x="70" y="305" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Specialist Appointment Booking</text>
+  <rect x="70" y="325" width="130" height="22" rx="6" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="80" y="340" fill="#7dd3fc" font-family="monospace" font-size="10">SPA Client Engine</text>
+
+  <!-- Arrow 1 -->
+  <path d="M 310 240 L 370 240" stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <polygon points="370,235 380,240 370,245" fill="#2dd4bf"/>
+  <text x="318" y="230" fill="#2dd4bf" font-family="-apple-system, sans-serif" font-size="10" font-weight="bold">REST / API</text>
+
+  <!-- Step 2 Box: Server & Gateway -->
+  <rect x="380" y="120" width="260" height="240" rx="14" fill="#020617" stroke="#0d9488" stroke-width="1.5"/>
+  <rect x="380" y="120" width="260" height="38" rx="14 14 0 0" fill="#042f2e"/>
+  <text x="400" y="144" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Backend (Node.js / Express)</text>
+  <text x="400" y="185" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• JWT Auth &amp; Role-Based Guards</text>
+  <text x="400" y="215" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Dual DB Proxy (Mongoose &amp; In-Mem)</text>
+  <text x="400" y="245" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Multer Uploads (with /tmp for Vercel)</text>
+  <text x="400" y="275" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• PDF Clinical Report Generator</text>
+  <text x="400" y="305" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Appointment Scheduling Engine</text>
+  <rect x="400" y="325" width="120" height="22" rx="6" fill="#134e4a"/>
+  <text x="410" y="340" fill="#2dd4bf" font-family="monospace" font-size="10">Express Core API</text>
+
+  <!-- Arrow 2 -->
+  <path d="M 640 240 L 700 240" stroke="#38bdf8" stroke-width="2.5" stroke-dasharray="4 4"/>
+  <polygon points="700,235 710,240 700,245" fill="#38bdf8"/>
+  <text x="646" y="230" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="bold">INFERENCE</text>
+
+  <!-- Step 3 Box: ML Engine & Fallback -->
+  <rect x="710" y="120" width="240" height="240" rx="14" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="710" y="120" width="240" height="38" rx="14 14 0 0" fill="#0f172a"/>
+  <text x="728" y="144" fill="#a78bfa" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">AI Inference &amp; Grad-CAM</text>
+  <text x="728" y="185" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Remote Python ML Server (5001)</text>
+  <text x="728" y="215" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Local Embedded ML Fallback</text>
+  <text x="728" y="245" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Dual Stage: Binary → Disease</text>
+  <text x="728" y="275" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• Grad-CAM Attention Heatmaps</text>
+  <text x="728" y="305" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12">• 100% Uptime Guaranteed</text>
+  <rect x="728" y="325" width="130" height="22" rx="6" fill="#312e81"/>
+  <text x="738" y="340" fill="#c7d2fe" font-family="monospace" font-size="10">XAI ResNet / EffNet</text>
+</svg>

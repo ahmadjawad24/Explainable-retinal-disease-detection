@@ -38,8 +38,8 @@ const Contact = () => {
           <div className="lg:col-span-1 space-y-6">
             {[
               { icon: Mail, label: 'Email', value: 'info@aieyecare.com' },
-              { icon: Phone, label: 'Phone', value: '+92 300 1234567' },
-              { icon: MapPin, label: 'Address', value: 'Karachi, Pakistan' },
+              { icon: Phone, label: 'Phone', value: '+92 348 2991158' },
+              { icon: MapPin, label: 'Address', value: 'Swabi, Pakistan' },
               { icon: Clock, label: 'Working Hours', value: 'Mon - Fri: 9AM - 6PM' }
             ].map((item, index) => (
               <div key={index} className="bg-white rounded-xl p-6 shadow-md flex items-start space-x-4">

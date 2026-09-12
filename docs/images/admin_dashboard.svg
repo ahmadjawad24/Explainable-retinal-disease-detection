@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620" width="100%" height="100%">
+  <defs>
+    <linearGradient id="adminBanner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="cardShadow" x="-2%" y="-2%" width="104%" height="106%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0f172a" flood-opacity="0.06"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1060" height="620" fill="#f8fafc" rx="16"/>
+
+  <!-- Browser/Window Header -->
+  <rect width="1060" height="42" fill="#ffffff" rx="16 16 0 0" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="28" cy="21" r="5.5" fill="#f87171"/>
+  <circle cx="46" cy="21" r="5.5" fill="#fbbf24"/>
+  <circle cx="64" cy="21" r="5.5" fill="#34d399"/>
+  <rect x="240" y="10" width="580" height="22" rx="6" fill="#f1f5f9"/>
+  <text x="530" y="25" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" text-anchor="middle">
+    https://ai-eyecare.vercel.app/admin — Admin Control Center
+  </text>
+
+  <!-- Left Sidebar (Clean Deep Slate #0f172a) -->
+  <rect x="0" y="42" width="220" height="578" fill="#0f172a" rx="0 0 0 16"/>
+  <line x1="220" y1="42" x2="220" y2="620" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Logo -->
+  <rect x="20" y="60" width="32" height="32" rx="8" fill="#0284c7"/>
+  <circle cx="36" cy="76" r="6" fill="#ffffff"/>
+  <circle cx="36" cy="76" r="3" fill="#0284c7"/>
+  <text x="60" y="75" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">AI Eye Care</text>
+  <text x="60" y="87" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="9" font-weight="600" letter-spacing="0.5">ADMIN PORTAL</text>
+
+  <line x1="20" y1="104" x2="200" y2="104" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Nav Items -->
+  <!-- Active Dashboard Item -->
+  <rect x="14" y="118" width="192" height="34" rx="8" fill="#0284c7"/>
+  <text x="32" y="140" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">📊  Dashboard</text>
+
+  <rect x="14" y="158" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="180" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">✅  Reviews &amp; Scans</text>
+
+  <rect x="14" y="198" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="220" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">👥  User Directory</text>
+
+  <rect x="14" y="238" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="260" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">📄  Clinical Reports</text>
+
+  <!-- Cross-Portal Switcher -->
+  <line x1="20" y1="290" x2="200" y2="290" stroke="#1e293b" stroke-width="1"/>
+  <text x="20" y="310" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9" font-weight="bold" letter-spacing="0.5">CROSS-PORTAL PREVIEW</text>
+
+  <rect x="14" y="322" width="192" height="30" rx="6" fill="#1e293b"/>
+  <text x="30" y="341" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="500">↗ Patient Screening</text>
+
+  <rect x="14" y="358" width="192" height="30" rx="6" fill="#1e293b"/>
+  <text x="30" y="377" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="500">↗ Doctor Workspace</text>
+
+  <!-- Admin User & Logout -->
+  <line x1="20" y1="520" x2="200" y2="520" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="36" cy="548" r="14" fill="#0284c7"/>
+  <text x="36" y="552" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">A</text>
+  <text x="58" y="546" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">System Admin</text>
+  <text x="58" y="558" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9">admin@aiyecare.com</text>
+
+  <rect x="14" y="574" width="192" height="28" rx="6" fill="#1e293b"/>
+  <text x="110" y="592" fill="#f87171" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⎋  Sign Out</text>
+
+  <!-- Top Navbar -->
+  <rect x="220" y="42" width="840" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="245" y="73" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Role: <tspan fill="#0284c7">Admin Control Center</tspan></text>
+  
+  <!-- Role switcher pills in topbar -->
+  <rect x="680" y="54" width="230" height="28" rx="8" fill="#f1f5f9" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="682" y="56" width="76" height="24" rx="6" fill="#ffffff"/>
+  <text x="720" y="72" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Admin Panel</text>
+  <text x="796" y="72" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Doctor</text>
+  <text x="872" y="72" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="500" text-anchor="middle">Patient</text>
+
+  <rect x="930" y="54" width="95" height="28" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="977" y="72" fill="#dc2626" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⎋ Logout</text>
+
+  <!-- Main Content View -->
+  <!-- Welcome Banner (Deep Slate & Sky Accent - NO RED) -->
+  <rect x="245" y="110" width="785" height="92" rx="14" fill="url(#adminBanner)" stroke="#334155" stroke-width="1"/>
+  <rect x="265" y="124" width="124" height="20" rx="10" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1"/>
+  <text x="327" y="138" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">🛡️ SYSTEM OVERVIEW</text>
+  <text x="265" y="166" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="19" font-weight="bold">Admin Control Center</text>
+  <text x="265" y="186" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="11">Oversee retinal screening telemetry, verify ophthalmology credentials, and audit diagnostic throughput.</text>
+
+  <!-- 4 Stats Cards (Clean Slate, Sky, Soft Neutral) -->
+  <rect x="245" y="218" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="257" y="230" width="32" height="32" rx="8" fill="#f1f5f9"/>
+  <text x="273" y="251" fill="#475569" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">👥</text>
+  <text x="298" y="248" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">124</text>
+  <text x="298" y="262" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Total Accounts</text>
+
+  <rect x="445" y="218" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="457" y="230" width="32" height="32" rx="8" fill="#e0f2fe"/>
+  <text x="473" y="251" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">👨‍⚕️</text>
+  <text x="498" y="248" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">18</text>
+  <text x="498" y="262" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="10">Active Clinicians</text>
+
+  <rect x="645" y="218" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="657" y="230" width="32" height="32" rx="8" fill="#ecfdf5"/>
+  <text x="673" y="251" fill="#059669" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">📋</text>
+  <text x="698" y="248" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">106</text>
+  <text x="698" y="262" fill="#059669" font-family="-apple-system, sans-serif" font-size="10">Patient Records</text>
+
+  <rect x="845" y="218" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="857" y="230" width="32" height="32" rx="8" fill="#fef3c7"/>
+  <text x="873" y="251" fill="#d97706" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">⏳</text>
+  <text x="898" y="248" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">2</text>
+  <text x="898" y="262" fill="#d97706" font-family="-apple-system, sans-serif" font-size="10">Pending Verifications</text>
+
+  <!-- Doctor Verification Queue Panel -->
+  <rect x="245" y="306" width="785" height="142" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="265" y="332" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Pending Doctor Verifications</text>
+  <text x="965" y="332" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" text-anchor="end">2 Actions Required</text>
+  <line x1="245" y1="344" x2="1030" y2="344" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Doctor row 1 -->
+  <circle cx="282" cy="378" r="16" fill="#e0f2fe"/>
+  <text x="282" y="383" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">S</text>
+  <text x="310" y="375" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Dr. Sarah Ali</text>
+  <text x="310" y="390" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">doctor2@aiyecare.com • Retina Specialist</text>
+
+  <rect x="520" y="366" width="105" height="22" rx="6" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="572" y="381" fill="#b45309" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Pending Review</text>
+
+  <rect x="850" y="364" width="80" height="26" rx="6" fill="#0284c7"/>
+  <text x="890" y="381" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">✓ Approve</text>
+  <rect x="940" y="364" width="70" height="26" rx="6" fill="#f1f5f9"/>
+  <text x="975" y="381" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Reject</text>
+
+  <!-- Doctor row 2 -->
+  <circle cx="282" cy="422" r="16" fill="#e0f2fe"/>
+  <text x="282" y="427" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">M</text>
+  <text x="310" y="419" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Dr. Muhammad Imran</text>
+  <text x="310" y="434" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">doctor3@aiyecare.com • Glaucoma Specialist</text>
+
+  <rect x="520" y="410" width="105" height="22" rx="6" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="572" y="425" fill="#b45309" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Pending Review</text>
+
+  <rect x="850" y="408" width="80" height="26" rx="6" fill="#0284c7"/>
+  <text x="890" y="425" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">✓ Approve</text>
+  <rect x="940" y="408" width="70" height="26" rx="6" fill="#f1f5f9"/>
+  <text x="975" y="425" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Reject</text>
+
+  <!-- System Users Preview Table -->
+  <rect x="245" y="462" width="785" height="142" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="265" y="488" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Recent User Activity</text>
+  <text x="965" y="488" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="end">View All 124 Users →</text>
+  
+  <rect x="255" y="500" width="765" height="24" rx="4" fill="#f8fafc"/>
+  <text x="270" y="516" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">USER</text>
+  <text x="520" y="516" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">ROLE</text>
+  <text x="700" y="516" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">STATUS</text>
+  <text x="900" y="516" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">REGISTERED</text>
+
+  <text x="270" y="542" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Dr. Ahmed Khan (Ophthalmologist)</text>
+  <text x="520" y="542" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">Doctor</text>
+  <text x="700" y="542" fill="#059669" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">● Active</text>
+  <text x="900" y="542" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Sep 12, 2026</text>
+
+  <text x="270" y="572" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Johnathan Doe (Patient ID #4092)</text>
+  <text x="520" y="572" fill="#475569" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">Patient</text>
+  <text x="700" y="572" fill="#059669" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">● Active</text>
+  <text x="900" y="572" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Sep 11, 2026</text>
+</svg>

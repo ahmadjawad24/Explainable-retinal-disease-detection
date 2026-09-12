@@ -1,0 +1,6 @@
+{
+  "name": "AI Eye Care - Retinal Disease Detection",
+  "description": "AI-powered retinal and eye disease detection system with explainable Grad-CAM heatmaps, doctor review workflow, and appointment management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

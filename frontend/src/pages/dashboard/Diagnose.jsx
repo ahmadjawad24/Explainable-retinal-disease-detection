@@ -102,6 +102,62 @@ const Diagnose = () => {
 
   const handleUploadClick = () => fileInputRef.current?.click();
 
+  const handleLoadSample = () => {
+    try {
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext('2d');
+
+      // Draw fundus eyeball background
+      const grad = ctx.createRadialGradient(256, 256, 10, 256, 256, 250);
+      grad.addColorStop(0, '#991b1b');
+      grad.addColorStop(0.7, '#450a0a');
+      grad.addColorStop(1, '#0f0202');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 512, 512);
+
+      // Draw Optic Disc
+      const discGrad = ctx.createRadialGradient(180, 256, 2, 180, 256, 45);
+      discGrad.addColorStop(0, '#fef08a');
+      discGrad.addColorStop(0.7, '#f59e0b');
+      discGrad.addColorStop(1, '#b45309');
+      ctx.fillStyle = discGrad;
+      ctx.beginPath();
+      ctx.arc(180, 256, 40, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Draw Macula
+      ctx.fillStyle = '#260404';
+      ctx.beginPath();
+      ctx.arc(330, 256, 24, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Blood vessels
+      ctx.strokeStyle = '#260404';
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(180, 256);
+      ctx.bezierCurveTo(210, 140, 290, 110, 420, 130);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.moveTo(180, 256);
+      ctx.bezierCurveTo(210, 370, 300, 400, 420, 380);
+      ctx.stroke();
+
+      canvas.toBlob((blob) => {
+        if (!blob) return;
+        const sampleFile = new File([blob], 'clinical_fundus_sample.png', { type: 'image/png' });
+        processFile(sampleFile);
+        toast.success('Sample retinal fundus scan loaded');
+      }, 'image/png');
+    } catch (err) {
+      console.error(err);
+      toast.error('Could not load sample scan');
+    }
+  };
+
   const handleReset = () => {
     setImagePreview(null);
     setImageFile(null);
@@ -300,21 +356,28 @@ const Diagnose = () => {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button
                 onClick={handleUploadClick}
-                className="flex items-center justify-center space-x-2 px-6 py-3 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition-colors"
+                className="flex items-center justify-center space-x-2 px-6 py-3 bg-teal-600 text-white rounded-xl hover:bg-teal-700 transition-colors font-medium cursor-pointer shadow-xs"
               >
                 <Upload className="h-5 w-5" />
-                <span>Upload Image</span>
+                <span>Upload Fundus Image</span>
+              </button>
+              <button
+                onClick={handleLoadSample}
+                className="flex items-center justify-center space-x-2 px-6 py-3 bg-slate-100 text-teal-800 border border-teal-200 rounded-xl hover:bg-teal-50 transition-colors font-medium cursor-pointer"
+              >
+                <Eye className="h-5 w-5 text-teal-600" />
+                <span>Try Demo Sample Fundus Scan</span>
               </button>
             </div>
             <input ref={fileInputRef} type="file" accept="image/*" onChange={handleFileChange} className="hidden" />
-            <p className="mt-4 text-sm text-gray-400">Supported formats: JPG, PNG (Max 10MB)</p>
+            <p className="mt-4 text-sm text-gray-500">Supported formats: JPG, PNG (Max 10MB)</p>
           </div>
         )}
       </div>
 
       {/* Results Section */}
       {result && (
-        <div className={`rounded-xl p-6 shadow border-2 ${getResultBgColor(result.prediction)}`}>
+        <div className={`rounded-2xl p-6 shadow border-2 ${getResultBgColor(result.prediction)}`}>
           <div className="flex items-center space-x-4 mb-6">
             {result.isNormal ? (
               <CheckCircle className="h-12 w-12 text-green-600" />
@@ -322,29 +385,57 @@ const Diagnose = () => {
               <AlertCircle className="h-12 w-12 text-red-600" />
             )}
             <div>
-              <h2 className="text-2xl font-bold capitalize">
+              <h2 className="text-2xl font-bold capitalize text-slate-900">
                 {result.prediction === 'normal' ? 'Healthy Eyes' : result.prediction}
               </h2>
-              <p className="text-lg opacity-80">{Math.round(result.confidence * 100)}% confidence</p>
+              <p className="text-lg text-slate-700 font-semibold">{Math.round(result.confidence * 100)}% diagnostic confidence</p>
             </div>
           </div>
 
+          {/* Explainable Grad-CAM Heatmap Comparison */}
+          {result.gradcamImageUrl && (
+            <div className="mb-6 p-5 bg-white/80 backdrop-blur-xs rounded-xl border border-slate-200">
+              <div className="flex items-center justify-between mb-3">
+                <div className="flex items-center gap-2">
+                  <Thermometer className="w-5 h-5 text-teal-600" />
+                  <h4 className="font-bold text-slate-900">Explainable Grad-CAM Attention Heatmap</h4>
+                </div>
+                <span className="text-xs px-2.5 py-1 bg-teal-100 text-teal-800 rounded-full font-semibold">
+                  Visual Interpretability
+                </span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="p-3 bg-slate-950 rounded-xl border border-slate-800">
+                  <p className="text-xs font-semibold text-slate-300 mb-2">Original Retinal Scan</p>
+                  <img src={imagePreview} alt="Original Fundus" className="w-full h-56 object-contain rounded-lg" />
+                </div>
+                <div className="p-3 bg-slate-950 rounded-xl border border-teal-500/50">
+                  <p className="text-xs font-semibold text-teal-400 mb-2">Grad-CAM Neural Attention Overlay</p>
+                  <img src={result.gradcamImageUrl} alt="Grad-CAM Heatmap" className="w-full h-56 object-contain rounded-lg" />
+                </div>
+              </div>
+              <p className="text-xs text-slate-600 mt-3">
+                Warm colored focal areas (red/yellow) indicate anatomical structures that guided the diagnostic classification.
+              </p>
+            </div>
+          )}
+
           {/* Binary Result */}
           {result.binaryResult && (
-            <div className="mb-4 p-4 bg-white/50 rounded-lg">
-              <h4 className="font-semibold mb-2">AI Analysis:</h4>
+            <div className="mb-4 p-4 bg-white/70 rounded-xl">
+              <h4 className="font-semibold text-slate-900 mb-2">AI Binary Analysis:</h4>
               <div className="grid grid-cols-2 gap-4">
-                <div className="text-center p-3 bg-green-100 rounded-lg">
-                  <p className="text-2xl font-bold text-green-700">
+                <div className="text-center p-3 bg-green-100/90 rounded-lg">
+                  <p className="text-2xl font-bold text-green-800">
                     {(result.binaryResult.normalProbability * 100).toFixed(1)}%
                   </p>
-                  <p className="text-sm text-green-600">Normal Probability</p>
+                  <p className="text-sm font-medium text-green-700">Normal Probability</p>
                 </div>
-                <div className="text-center p-3 bg-red-100 rounded-lg">
-                  <p className="text-2xl font-bold text-red-700">
+                <div className="text-center p-3 bg-red-100/90 rounded-lg">
+                  <p className="text-2xl font-bold text-red-800">
                     {(result.binaryResult.diseaseProbability * 100).toFixed(1)}%
                   </p>
-                  <p className="text-sm text-red-600">Disease Probability</p>
+                  <p className="text-sm font-medium text-red-700">Disease Probability</p>
                 </div>
               </div>
             </div>
@@ -352,13 +443,13 @@ const Diagnose = () => {
 
           {/* Disease Probabilities */}
           {result.diseaseResult && (
-            <div className="mb-4 p-4 bg-white/50 rounded-lg">
-              <h4 className="font-semibold mb-2">Disease Probabilities:</h4>
+            <div className="mb-4 p-4 bg-white/70 rounded-xl">
+              <h4 className="font-semibold text-slate-900 mb-2">Multi-Class Disease Probabilities:</h4>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                 {Object.entries(result.diseaseResult.probabilities || {}).map(([disease, prob]) => (
-                  <div key={disease} className="text-center p-2 bg-gray-100 rounded-lg">
-                    <p className="text-lg font-bold capitalize">{disease}</p>
-                    <p className="text-sm text-gray-600">{(prob * 100).toFixed(1)}%</p>
+                  <div key={disease} className="text-center p-2.5 bg-slate-100/80 rounded-lg">
+                    <p className="text-sm font-bold capitalize text-slate-900">{disease}</p>
+                    <p className="text-sm font-mono text-slate-700">{(prob * 100).toFixed(1)}%</p>
                   </div>
                 ))}
               </div>
@@ -367,15 +458,28 @@ const Diagnose = () => {
 
           {/* Recommendations */}
           {!result.isNormal && result.recommendations && (
-            <div className="bg-white/50 rounded-lg p-4 mb-6">
-              <h3 className="font-semibold mb-3">Recommendations:</h3>
+            <div className="bg-white/70 rounded-xl p-4 mb-6">
+              <h3 className="font-semibold text-slate-900 mb-3">Clinical Recommendations:</h3>
               <ul className="space-y-2">
-                {result.recommendations.map((rec, index) => (
-                  <li key={index} className="flex items-start space-x-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-current mt-2"></span>
-                    <span>{rec}</span>
-                  </li>
-                ))}
+                {result.recommendations.map((rec, index) => {
+                  const title = typeof rec === 'object' ? rec.title : rec;
+                  const desc = typeof rec === 'object' ? rec.description : null;
+                  const priority = typeof rec === 'object' ? rec.priority : null;
+                  return (
+                    <li key={index} className="flex items-start space-x-2 text-sm text-slate-800">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-600 mt-2 shrink-0"></span>
+                      <div>
+                        <span className="font-semibold">{title}</span>
+                        {desc && <p className="text-xs text-slate-600 mt-0.5">{desc}</p>}
+                        {priority && (
+                          <span className="inline-block text-[10px] uppercase font-bold px-2 py-0.5 mt-1 rounded-md bg-amber-100 text-amber-800">
+                            {priority} Priority
+                          </span>
+                        )}
+                      </div>
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           )}

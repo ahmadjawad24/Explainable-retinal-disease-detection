@@ -77,4 +77,22 @@ appointmentSchema.index({ patientId: 1, date: -1 });
 appointmentSchema.index({ doctorId: 1, date: -1 });
 appointmentSchema.index({ status: 1, date: 1 });
 
-module.exports = mongoose.model('Appointment', appointmentSchema);
+const { AppointmentMemory } = require('./inMemoryStore');
+const MongooseAppointment = mongoose.model('Appointment', appointmentSchema);
+
+const AppointmentProxy = new Proxy(MongooseAppointment, {
+    get(target, prop) {
+        if (mongoose.connection.readyState !== 1) {
+            return AppointmentMemory[prop];
+        }
+        return target[prop];
+    },
+    construct(target, args) {
+        if (mongoose.connection.readyState !== 1) {
+            return new AppointmentMemory(...args);
+        }
+        return new target(...args);
+    }
+});
+
+module.exports = AppointmentProxy;

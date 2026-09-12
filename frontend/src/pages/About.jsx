@@ -163,99 +163,102 @@ const About = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 bg-gradient-to-br from-gray-50 to-sky-50">
+      {/* Team & Supervision Section */}
+      <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Section Header */}
           <div className="text-center mb-16">
-            <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Our Team</span>
-            <h2 className="text-4xl font-bold text-gray-900 mt-3">
+            <span className="text-sky-600 font-semibold text-xs sm:text-sm uppercase tracking-wider px-3.5 py-1.5 bg-sky-50 rounded-full border border-sky-200">
+              Our Team &amp; Leadership
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mt-4">
               Meet the Minds Behind the Vision
             </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto mt-3 text-base">
+              Dedicated developers and clinical advisors collaborating to engineer intelligent, accessible, and explainable retinal healthcare.
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto">
+          {/* Developers - Perfectly Centered 2-Column Grid */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20">
             {/* Developer 1 - Ahmad Jawad */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-sky-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="h-12 w-12 text-white" />
+            <div className="bg-white rounded-2xl p-8 sm:p-9 shadow-md hover:shadow-xl border border-gray-100 hover:border-sky-200 transition-all duration-300 text-center flex flex-col justify-between group">
+              <div>
+                <div className="w-24 h-24 bg-gradient-to-br from-sky-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+                  <Users className="h-12 w-12 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-1">Ahmad Jawad</h3>
+                <span className="inline-block px-3 py-1 bg-sky-50 text-sky-700 rounded-full text-xs font-semibold mb-4 border border-sky-200">
+                  Lead Developer
+                </span>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                  Full-stack developer specializing in AI/ML integration and healthcare applications. 
+                  Built the complete system architecture, convolutional neural models, and machine learning pipeline.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Ahmad Jawad</h3>
-              <p className="text-sky-600 font-semibold mb-4">Lead Developer</p>
-              <p className="text-gray-600 text-sm">
-                Full-stack developer specializing in AI/ML integration and healthcare applications. 
-                Built the complete system architecture and machine learning pipeline.
-              </p>
-              <div className="mt-6 flex justify-center flex-wrap gap-2">
-                <div className="px-3 py-1 bg-sky-50 rounded-lg">
-                  <p className="text-xs text-sky-600 font-medium">React</p>
-                </div>
-                <div className="px-3 py-1 bg-sky-50 rounded-lg">
-                  <p className="text-xs text-sky-600 font-medium">Node.js</p>
-                </div>
-                <div className="px-3 py-1 bg-sky-50 rounded-lg">
-                  <p className="text-xs text-sky-600 font-medium">PyTorch</p>
-                </div>
+              <div className="flex justify-center flex-wrap gap-2 pt-2 border-t border-gray-100">
+                <span className="px-3 py-1 bg-sky-50 rounded-lg text-xs text-sky-700 font-medium">React</span>
+                <span className="px-3 py-1 bg-sky-50 rounded-lg text-xs text-sky-700 font-medium">Node.js</span>
+                <span className="px-3 py-1 bg-sky-50 rounded-lg text-xs text-sky-700 font-medium">PyTorch</span>
+                <span className="px-3 py-1 bg-sky-50 rounded-lg text-xs text-sky-700 font-medium">Grad-CAM</span>
               </div>
             </div>
 
             {/* Developer 2 - Khaleeq Ur Rehman */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Users className="h-12 w-12 text-white" />
+            <div className="bg-white rounded-2xl p-8 sm:p-9 shadow-md hover:shadow-xl border border-gray-100 hover:border-teal-200 transition-all duration-300 text-center flex flex-col justify-between group">
+              <div>
+                <div className="w-24 h-24 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md shadow-teal-500/20 group-hover:scale-105 transition-transform">
+                  <Users className="h-12 w-12 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-1">Khaleeq Ur Rehman</h3>
+                <span className="inline-block px-3 py-1 bg-teal-50 text-teal-700 rounded-full text-xs font-semibold mb-4 border border-teal-200">
+                  Developer
+                </span>
+                <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+                  Software developer contributing to system development, feature implementation, 
+                  and ensuring robust backend functionality, API endpoints, and data flows.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Khaleeq Ur Rehman</h3>
-              <p className="text-teal-600 font-semibold mb-4">Developer</p>
-              <p className="text-gray-600 text-sm">
-                Software developer contributing to system development, feature implementation, 
-                and ensuring robust backend functionality.
-              </p>
-              <div className="mt-6 flex justify-center flex-wrap gap-2">
-                <div className="px-3 py-1 bg-teal-50 rounded-lg">
-                  <p className="text-xs text-teal-600 font-medium">JavaScript</p>
-                </div>
-                <div className="px-3 py-1 bg-teal-50 rounded-lg">
-                  <p className="text-xs text-teal-600 font-medium">Python</p>
-                </div>
-                <div className="px-3 py-1 bg-teal-50 rounded-lg">
-                  <p className="text-xs text-teal-600 font-medium">SQL</p>
-                </div>
+              <div className="flex justify-center flex-wrap gap-2 pt-2 border-t border-gray-100">
+                <span className="px-3 py-1 bg-teal-50 rounded-lg text-xs text-teal-700 font-medium">JavaScript</span>
+                <span className="px-3 py-1 bg-teal-50 rounded-lg text-xs text-teal-700 font-medium">Python</span>
+                <span className="px-3 py-1 bg-teal-50 rounded-lg text-xs text-teal-700 font-medium">SQL</span>
+                <span className="px-3 py-1 bg-teal-50 rounded-lg text-xs text-teal-700 font-medium">Express</span>
               </div>
             </div>
-
-            {/* Supervisor - Row 2 spans full width */}
-          </div>
-        </div>
-      </section>
-
-      {/* Supervisor Section - Second Row */}
-      <section className="py-16 bg-gradient-to-br from-gray-50 to-sky-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-10">
-            <span className="text-sky-600 font-semibold text-sm uppercase tracking-wider">Project Supervision</span>
-            <h2 className="text-3xl font-bold text-gray-900 mt-2">
-              Under Expert Guidance
-            </h2>
           </div>
 
-          <div className="max-w-md mx-auto">
-            {/* Supervisor */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow text-center">
-              <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6">
+          {/* Supervisor Guidance Subsection */}
+          <div className="max-w-3xl mx-auto">
+            <div className="text-center mb-8">
+              <span className="text-purple-600 font-semibold text-xs sm:text-sm uppercase tracking-wider px-3.5 py-1.5 bg-purple-50 rounded-full border border-purple-200">
+                Project Supervision
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mt-3">
+                Under Expert Guidance
+              </h3>
+            </div>
+
+            <div className="bg-white rounded-2xl p-8 sm:p-10 shadow-lg hover:shadow-xl border border-purple-100/90 transition-all text-center group">
+              <div className="w-24 h-24 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-md shadow-purple-500/20 group-hover:scale-105 transition-transform">
                 <GraduationCap className="h-12 w-12 text-white" />
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Dr. Shoaib Quraishi</h3>
-              <p className="text-purple-600 font-semibold mb-4">Project Supervisor</p>
-              <p className="text-gray-600">
+              <h4 className="text-2xl font-bold text-gray-900 mb-1">Dr. Shoaib Quraishi</h4>
+              <p className="text-purple-600 font-semibold text-sm sm:text-base mb-4">Project Supervisor</p>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto mb-6">
                 Medical expert providing guidance on clinical requirements, data validation, 
-                and ensuring the system meets healthcare standards and best practices.
+                and ensuring the system meets healthcare standards, medical safety guidelines, and best diagnostic practices.
               </p>
-              <div className="mt-6 flex justify-center flex-wrap gap-2">
-                <div className="px-4 py-2 bg-purple-50 rounded-lg">
-                  <p className="text-xs text-purple-600 font-medium">Ophthalmology</p>
-                </div>
-                <div className="px-4 py-2 bg-purple-50 rounded-lg">
-                  <p className="text-xs text-purple-600 font-medium">Research</p>
-                </div>
+              <div className="flex justify-center flex-wrap gap-2 pt-2 border-t border-purple-50">
+                <span className="px-4 py-1.5 bg-purple-50 rounded-lg text-xs text-purple-700 font-medium border border-purple-100">
+                  Ophthalmology Guidance
+                </span>
+                <span className="px-4 py-1.5 bg-purple-50 rounded-lg text-xs text-purple-700 font-medium border border-purple-100">
+                  Clinical Validation
+                </span>
+                <span className="px-4 py-1.5 bg-purple-50 rounded-lg text-xs text-purple-700 font-medium border border-purple-100">
+                  Healthcare Research
+                </span>
               </div>
             </div>
           </div>

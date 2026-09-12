@@ -48,7 +48,11 @@ const reportsDir = path.join(uploadDir, 'reports');
 });
 
 // Static files for uploads
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+const isVercel = process.env.VERCEL === '1' || process.env.VERCEL === 'true';
+const uploadDir = isVercel
+    ? path.join('/tmp', 'uploads')
+    : path.join(__dirname, 'uploads');
+app.use('/uploads', express.static(uploadDir));
 
 // ML Server configuration
 const ML_SERVER_URL = process.env.ML_SERVER_URL || 'http://localhost:5001';
@@ -56,10 +60,13 @@ const ML_SERVER_URL = process.env.ML_SERVER_URL || 'http://localhost:5001';
 // Database connection
 const connectDB = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ai_eye_care');
+        mongoose.set('bufferCommands', false);
+        await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ai_eye_care', {
+            serverSelectionTimeoutMS: 2000
+        });
         console.log('✅ MongoDB connected successfully');
     } catch (error) {
-        console.error('❌ MongoDB connection error:', error.message);
+        console.warn('⚠️  MongoDB not connected, running with built-in in-memory store:', error.message);
     }
 };
 
@@ -100,28 +107,31 @@ app.get('/api/health', async (req, res) => {
             models_loaded: mlStatus.models_loaded
         } : {
             status: 'offline',
-            note: 'Start ML server with: python ../models/ml_server.py'
+            note: 'Running embedded fallback diagnosis model'
         }
     });
 });
 
-// Root endpoint
-app.get('/', (req, res) => {
-    res.json({
-        name: 'AI Eye Care System API',
-        version: '1.0.0',
-        description: 'Backend API for AI-powered eye disease detection',
-        mlServer: ML_SERVER_URL,
-        endpoints: {
-            auth: '/api/auth',
-            prediction: '/api/prediction',
-            appointments: '/api/appointments',
-            reports: '/api/reports',
-            users: '/api/users',
-            health: '/api/health'
+// Serve frontend SPA
+const frontendDist = path.join(__dirname, '../frontend/dist');
+if (fs.existsSync(frontendDist)) {
+    app.use(express.static(frontendDist));
+    app.get('*', (req, res, next) => {
+        if (req.path.startsWith('/api') || req.path.startsWith('/uploads')) {
+            return next();
         }
+        res.sendFile(path.join(frontendDist, 'index.html'));
     });
-});
+} else {
+    // Root endpoint fallback if frontend not yet built
+    app.get('/', (req, res) => {
+        res.json({
+            name: 'AI Eye Care System API',
+            version: '1.0.0',
+            description: 'Backend API for AI-powered eye disease detection'
+        });
+    });
+}
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -132,7 +142,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-// 404 handler
+// 404 handler for unmatched API routes
 app.use((req, res) => {
     res.status(404).json({
         status: 'error',
@@ -140,7 +150,7 @@ app.use((req, res) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = 3000;
 
 // Start server
 const startServer = async () => {
@@ -150,21 +160,19 @@ const startServer = async () => {
     const mlStatus = await checkMLServer();
     if (mlStatus) {
         console.log('✅ ML Server connected');
-        if (mlStatus.binary_model && mlStatus.disease_model) {
-            console.log('✅ ML Models loaded and ready');
-        }
     } else {
-        console.log('⚠️  ML Server not running');
-        console.log('   To enable AI predictions, run: python ../models/ml_server.py');
-        console.log('   ML predictions will be disabled until ML server is started\n');
+        console.log('ℹ️  Using embedded fallback ML diagnosis and Grad-CAM generation');
     }
     
-    app.listen(PORT, () => {
+    app.listen(PORT, '0.0.0.0', () => {
         console.log(`🚀 Server running on port ${PORT}`);
-        console.log(`📚 API Documentation: http://localhost:${PORT}/api`);
     });
 };
 
-startServer();
+if (!process.env.VERCEL) {
+    startServer();
+} else {
+    connectDB();
+}
 
 module.exports = app;

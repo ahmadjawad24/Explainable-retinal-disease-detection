@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090d16"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <radialGradient id="heatDr" cx="55%" cy="52%" r="48%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.95"/>
+      <stop offset="35%" stop-color="#f97316" stop-opacity="0.8"/>
+      <stop offset="65%" stop-color="#eab308" stop-opacity="0.5"/>
+      <stop offset="90%" stop-color="#0284c7" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blurFilter">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="480" fill="url(#bg)" rx="16"/>
+
+  <!-- Title -->
+  <text x="50" y="55" fill="#2dd4bf" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" letter-spacing="1">EXPLAINABLE AI ENGINE (XAI)</text>
+  <text x="50" y="90" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="24" font-weight="bold">Explainable Retinal Attention: Fundus Image vs. Grad-CAM Heatmap</text>
+
+  <!-- Panel 1: Original Fundus -->
+  <rect x="50" y="120" width="425" height="310" rx="14" fill="#020617" stroke="#1e293b" stroke-width="1.5"/>
+  <rect x="50" y="120" width="425" height="42" rx="14 14 0 0" fill="#0b1120" stroke="#1e293b" stroke-width="1"/>
+  <text x="70" y="146" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Raw Patient Fundus Scan (512x512)</text>
+  <rect x="365" y="130" width="95" height="22" rx="6" fill="#1e293b"/>
+  <text x="375" y="145" fill="#94a3b8" font-family="monospace" font-size="10">RGB Optical</text>
+
+  <!-- Eyeball 1 -->
+  <circle cx="262" cy="275" r="105" fill="#7f1d1d"/>
+  <circle cx="205" cy="275" r="26" fill="#f59e0b"/>
+  <circle cx="205" cy="275" r="13" fill="#fef08a"/>
+  <!-- Vessels -->
+  <path d="M 205 275 Q 240 210 300 190 T 360 210" fill="none" stroke="#450a0a" stroke-width="4"/>
+  <path d="M 205 275 Q 250 340 310 360 T 370 340" fill="none" stroke="#450a0a" stroke-width="4"/>
+  <circle cx="300" cy="275" r="15" fill="#2d0502"/>
+  
+  <rect x="70" y="380" width="385" height="34" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <text x="85" y="401" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">Input: Color Fundus Photography capturing posterior pole and optic nerve head</text>
+
+  <!-- Panel 2: Grad-CAM Heatmap -->
+  <rect x="525" y="120" width="425" height="310" rx="14" fill="#020617" stroke="#0d9488" stroke-width="1.5"/>
+  <rect x="525" y="120" width="425" height="42" rx="14 14 0 0" fill="#042f2e" stroke="#0d9488" stroke-width="1"/>
+  <text x="545" y="146" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Grad-CAM Neural Attention Heatmap</text>
+  <rect x="830" y="130" width="105" height="22" rx="6" fill="#134e4a"/>
+  <text x="840" y="145" fill="#2dd4bf" font-family="monospace" font-size="10">Conv5_block3</text>
+
+  <!-- Eyeball 2 -->
+  <circle cx="737" cy="275" r="105" fill="#7f1d1d"/>
+  <circle cx="680" cy="275" r="26" fill="#f59e0b"/>
+  <circle cx="680" cy="275" r="13" fill="#fef08a"/>
+  <!-- Vessels -->
+  <path d="M 680 275 Q 715 210 775 190 T 835 210" fill="none" stroke="#450a0a" stroke-width="4"/>
+  <path d="M 680 275 Q 725 340 785 360 T 845 340" fill="none" stroke="#450a0a" stroke-width="4"/>
+  <circle cx="775" cy="275" r="15" fill="#2d0502"/>
+  <!-- Heatmap Active Layer -->
+  <circle cx="780" cy="265" r="65" fill="url(#heatDr)" filter="url(#blurFilter)"/>
+  <circle cx="740" cy="240" r="45" fill="url(#heatDr)" filter="url(#blurFilter)" opacity="0.8"/>
+
+  <rect x="545" y="380" width="385" height="34" rx="8" fill="#042f2e" stroke="#0d9488" stroke-width="1"/>
+  <text x="560" y="401" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="11">XAI Output: Thermal focus aligns strictly over microvascular hard exudates</text>
+</svg>

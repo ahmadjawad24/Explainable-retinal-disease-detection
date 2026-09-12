@@ -1,0 +1,146 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620" width="100%" height="100%">
+  <defs>
+    <radialGradient id="patientHeat" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#f97316" stop-opacity="0.75"/>
+      <stop offset="70%" stop-color="#eab308" stop-opacity="0.45"/>
+      <stop offset="95%" stop-color="#0284c7" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="patientBlur">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1060" height="620" fill="#f8fafc" rx="16"/>
+
+  <!-- Browser Header -->
+  <rect width="1060" height="42" fill="#ffffff" rx="16 16 0 0" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="28" cy="21" r="5.5" fill="#f87171"/>
+  <circle cx="46" cy="21" r="5.5" fill="#fbbf24"/>
+  <circle cx="64" cy="21" r="5.5" fill="#34d399"/>
+  <rect x="240" y="10" width="580" height="22" rx="6" fill="#f1f5f9"/>
+  <text x="530" y="25" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11" text-anchor="middle">
+    https://ai-eyecare.vercel.app/diagnose — Retinal Disease Screening &amp; Grad-CAM
+  </text>
+
+  <!-- Left Sidebar (White with Slate/Sky theme) -->
+  <rect x="0" y="42" width="220" height="578" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+
+  <!-- Logo -->
+  <rect x="20" y="60" width="32" height="32" rx="8" fill="#0284c7"/>
+  <circle cx="36" cy="76" r="6" fill="#ffffff"/>
+  <circle cx="36" cy="76" r="3" fill="#0284c7"/>
+  <text x="60" y="75" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">AI Eye Care</text>
+  <text x="60" y="87" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="9" font-weight="600">PATIENT PORTAL</text>
+
+  <line x1="20" y1="104" x2="200" y2="104" stroke="#f1f5f9" stroke-width="1"/>
+
+  <!-- Nav Items -->
+  <rect x="14" y="118" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="140" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">📊  Dashboard</text>
+
+  <rect x="14" y="158" width="192" height="34" rx="8" fill="#0284c7"/>
+  <text x="32" y="180" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">🔍  New Diagnosis</text>
+
+  <rect x="14" y="198" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="220" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">📜  Screening History</text>
+
+  <rect x="14" y="238" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="260" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">📄  My Reports</text>
+
+  <rect x="14" y="278" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="300" fill="#64748b" font-family="-apple-system, sans-serif" font-size="12">🗓️  Appointments</text>
+
+  <!-- User & Logout -->
+  <line x1="20" y1="520" x2="200" y2="520" stroke="#f1f5f9" stroke-width="1"/>
+  <circle cx="36" cy="548" r="14" fill="#e0f2fe"/>
+  <text x="36" y="552" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">P</text>
+  <text x="58" y="546" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Patient Demo</text>
+  <text x="58" y="558" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9">patient@test.com</text>
+
+  <rect x="14" y="574" width="192" height="28" rx="6" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="110" y="592" fill="#dc2626" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⎋ Sign Out</text>
+
+  <!-- Top Navbar -->
+  <rect x="220" y="42" width="840" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="245" y="73" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Retinal Health Screening Dashboard</text>
+
+  <rect x="930" y="54" width="95" height="28" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="977" y="72" fill="#dc2626" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⎋ Logout</text>
+
+  <!-- Main Content View -->
+  <!-- Fundus Scan + Grad-CAM View Panel (Left) -->
+  <rect x="245" y="110" width="460" height="490" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="270" y="140" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="14" font-weight="bold">Color Fundus &amp; Grad-CAM Heatmap</text>
+  <text x="270" y="156" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11">Left Eye (OS) — Captured 45° Posterior Pole</text>
+
+  <!-- Image Display Frame -->
+  <rect x="270" y="174" width="410" height="270" rx="12" fill="#030712"/>
+  
+  <!-- Retinal disc in SVG -->
+  <circle cx="475" cy="309" r="115" fill="#7f1d1d"/>
+  <circle cx="420" cy="309" r="24" fill="#f59e0b"/>
+  <circle cx="420" cy="309" r="12" fill="#fef08a"/>
+  <!-- Vessels -->
+  <path d="M 420 309 Q 455 240 515 225 T 590 240" fill="none" stroke="#450a0a" stroke-width="3"/>
+  <path d="M 420 309 Q 465 375 525 390 T 600 375" fill="none" stroke="#450a0a" stroke-width="3"/>
+  <path d="M 420 309 Q 390 260 350 250" fill="none" stroke="#450a0a" stroke-width="2.5"/>
+  <path d="M 420 309 Q 380 360 340 370" fill="none" stroke="#450a0a" stroke-width="2.5"/>
+  <circle cx="515" cy="309" r="14" fill="#3b0764"/>
+
+  <!-- Grad-CAM attention heatmap overlay -->
+  <g filter="url(#patientBlur)">
+    <circle cx="535" cy="330" r="50" fill="url(#patientHeat)"/>
+  </g>
+
+  <!-- Heatmap Active Badge -->
+  <rect x="282" y="186" width="170" height="22" rx="6" fill="#0f172a" fill-opacity="0.85" stroke="#334155" stroke-width="1"/>
+  <text x="367" y="201" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">🔥 Grad-CAM Attention Active</text>
+
+  <!-- Image Toggle Bar -->
+  <rect x="270" y="460" width="410" height="38" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="274" y="464" width="200" height="30" rx="6" fill="#0284c7"/>
+  <text x="374" y="483" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">Heatmap Overlay</text>
+  <text x="580" y="483" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11" font-weight="500" text-anchor="middle">Original Fundus</text>
+
+  <!-- Model Confidence & Findings Panel (Right) -->
+  <rect x="725" y="110" width="310" height="490" rx="14" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <rect x="745" y="130" width="115" height="22" rx="11" fill="#fee2e2" stroke="#fca5a5" stroke-width="1"/>
+  <text x="802" y="145" fill="#dc2626" font-family="-apple-system, sans-serif" font-size="10" font-weight="bold" text-anchor="middle">HIGH RISK DETECTED</text>
+
+  <text x="745" y="180" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="19" font-weight="bold">Diabetic Retinopathy</text>
+  <text x="745" y="198" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11">Grade: Moderate Non-Proliferative (NPDR)</text>
+
+  <!-- Confidence Meter -->
+  <rect x="745" y="218" width="270" height="48" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="757" y="238" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Diagnostic Confidence</text>
+  <text x="1002" y="238" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold" text-anchor="end">95.4%</text>
+  <rect x="757" y="248" width="245" height="6" rx="3" fill="#e2e8f0"/>
+  <rect x="757" y="248" width="234" height="6" rx="3" fill="#0284c7"/>
+
+  <!-- Clinical Biomarkers Detected -->
+  <text x="745" y="294" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold">Explainable AI Biomarkers</text>
+  <rect x="745" y="304" width="270" height="110" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  
+  <text x="757" y="324" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">• Microaneurysms Detected</text>
+  <text x="767" y="338" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Cluster in superior temporal arcade</text>
+
+  <text x="757" y="360" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">• Hard Exudates Present</text>
+  <text x="767" y="374" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Circinate pattern near foveal reflex</text>
+
+  <text x="757" y="396" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">• Optic Nerve Head: Intact</text>
+  <text x="767" y="408" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Cup-to-disc ratio 0.35 (Normal)</text>
+
+  <!-- Action CTAs -->
+  <rect x="745" y="432" width="270" height="36" rx="8" fill="#0284c7"/>
+  <text x="880" y="455" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Request Specialist Review</text>
+
+  <rect x="745" y="478" width="270" height="34" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="880" y="500" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">📥 Download Diagnostic PDF</text>
+
+  <rect x="745" y="522" width="270" height="34" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="880" y="544" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">🗓️ Schedule Clinical Appointment</text>
+</svg>

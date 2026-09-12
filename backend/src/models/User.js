@@ -83,4 +83,22 @@ userSchema.methods.toJSON = function() {
     return obj;
 };
 
-module.exports = mongoose.model('User', userSchema);
+const { UserMemory } = require('./inMemoryStore');
+const MongooseUser = mongoose.model('User', userSchema);
+
+const UserProxy = new Proxy(MongooseUser, {
+    get(target, prop) {
+        if (mongoose.connection.readyState !== 1) {
+            return UserMemory[prop];
+        }
+        return target[prop];
+    },
+    construct(target, args) {
+        if (mongoose.connection.readyState !== 1) {
+            return new UserMemory(...args);
+        }
+        return new target(...args);
+    }
+});
+
+module.exports = UserProxy;

@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1060 620" width="100%" height="100%">
+  <!-- Canvas Background -->
+  <rect width="1060" height="620" fill="#f8fafc" rx="16"/>
+
+  <!-- Browser Header -->
+  <rect width="1060" height="42" fill="#ffffff" rx="16 16 0 0" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="28" cy="21" r="5.5" fill="#f87171"/>
+  <circle cx="46" cy="21" r="5.5" fill="#fbbf24"/>
+  <circle cx="64" cy="21" r="5.5" fill="#34d399"/>
+  <rect x="240" y="10" width="580" height="22" rx="6" fill="#f1f5f9"/>
+  <text x="530" y="25" fill="#64748b" font-family="-apple-system, sans-serif" font-size="11" text-anchor="middle">
+    https://ai-eyecare.vercel.app/doctor — Doctor Reviews &amp; Clinical Verification Workspace
+  </text>
+
+  <!-- Left Sidebar (Deep Slate #0f172a) -->
+  <rect x="0" y="42" width="220" height="578" fill="#0f172a" rx="0 0 0 16"/>
+
+  <!-- Logo -->
+  <rect x="20" y="60" width="32" height="32" rx="8" fill="#0284c7"/>
+  <circle cx="36" cy="76" r="6" fill="#ffffff"/>
+  <circle cx="36" cy="76" r="3" fill="#0284c7"/>
+  <text x="60" y="75" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">AI Eye Care</text>
+  <text x="60" y="87" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="9" font-weight="600">DOCTOR WORKSPACE</text>
+
+  <line x1="20" y1="104" x2="200" y2="104" stroke="#1e293b" stroke-width="1"/>
+
+  <!-- Nav Items -->
+  <rect x="14" y="118" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="140" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">📊  Dashboard</text>
+
+  <rect x="14" y="158" width="192" height="34" rx="8" fill="#0284c7"/>
+  <text x="32" y="180" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">📋  Pending Reviews (3)</text>
+
+  <rect x="14" y="198" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="220" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">🗓️  Appointments</text>
+
+  <rect x="14" y="238" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="260" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">👥  Patient Roster</text>
+
+  <rect x="14" y="278" width="192" height="34" rx="8" fill="transparent"/>
+  <text x="32" y="300" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">🩺  Doctor Profile</text>
+
+  <!-- Doctor & Logout -->
+  <line x1="20" y1="520" x2="200" y2="520" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="36" cy="548" r="14" fill="#0284c7"/>
+  <text x="36" y="552" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold" text-anchor="middle">D</text>
+  <text x="58" y="546" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Dr. Ahmed Khan</text>
+  <text x="58" y="558" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9">Ophthalmologist</text>
+
+  <rect x="14" y="574" width="192" height="28" rx="6" fill="#1e293b"/>
+  <text x="110" y="592" fill="#f87171" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⎋ Sign Out</text>
+
+  <!-- Top Navbar -->
+  <rect x="220" y="42" width="840" height="52" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="245" y="73" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="600">Clinical Ophthalmology &amp; Grad-CAM Verification Portal</text>
+
+  <rect x="930" y="54" width="95" height="28" rx="8" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="977" y="72" fill="#dc2626" font-family="-apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">⎋ Logout</text>
+
+  <!-- Main Content View -->
+  <!-- Stats Row -->
+  <rect x="245" y="110" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="257" y="122" width="32" height="32" rx="8" fill="#f1f5f9"/>
+  <text x="273" y="143" fill="#475569" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">👁️</text>
+  <text x="298" y="140" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">1,428</text>
+  <text x="298" y="154" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10">Total Scans Evaluated</text>
+
+  <rect x="445" y="110" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="457" y="122" width="32" height="32" rx="8" fill="#e0f2fe"/>
+  <text x="473" y="143" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">✓</text>
+  <text x="498" y="140" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">892</text>
+  <text x="498" y="154" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="10">Verified Cases</text>
+
+  <rect x="645" y="110" width="185" height="74" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <rect x="657" y="122" width="32" height="32" rx="8" fill="#ecfdf5"/>
+  <text x="673" y="143" fill="#059669" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">🎯</text>
+  <text x="698" y="140" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">94.2%</text>
+  <text x="698" y="154" fill="#059669" font-family="-apple-system, sans-serif" font-size="10">Model Accuracy</text>
+
+  <rect x="845" y="110" width="185" height="74" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1"/>
+  <rect x="857" y="122" width="32" height="32" rx="8" fill="#dbeafe"/>
+  <text x="873" y="143" fill="#1d4ed8" font-family="-apple-system, sans-serif" font-size="14" text-anchor="middle">⏳</text>
+  <text x="898" y="140" fill="#1e40af" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">3 Cases</text>
+  <text x="898" y="154" fill="#2563eb" font-family="-apple-system, sans-serif" font-size="10">Pending Triage</text>
+
+  <!-- Review Triage Table -->
+  <rect x="245" y="200" width="785" height="400" rx="12" fill="#ffffff" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="265" y="230" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold">Patient Case Review &amp; Second Opinion Queue</text>
+  <text x="965" y="230" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="end">Refresh Queue ↻</text>
+
+  <rect x="255" y="246" width="765" height="24" rx="4" fill="#f8fafc"/>
+  <text x="270" y="262" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">PATIENT</text>
+  <text x="440" y="262" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">PREDICTED CONDITION</text>
+  <text x="640" y="262" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">CONFIDENCE</text>
+  <text x="780" y="262" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">STATUS</text>
+  <text x="920" y="262" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600">ACTION</text>
+
+  <!-- Case 1 -->
+  <line x1="255" y1="280" x2="1020" y2="280" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="270" y="306" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Tariq Mehmood (58y)</text>
+  <text x="270" y="320" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9">Scan ID: #SC-9041 • Right Eye (OD)</text>
+
+  <text x="440" y="306" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Diabetic Retinopathy</text>
+  <text x="440" y="320" fill="#dc2626" font-family="-apple-system, sans-serif" font-size="9" font-weight="bold">Moderate NPDR</text>
+
+  <text x="640" y="312" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold">95.4%</text>
+
+  <rect x="780" y="298" width="90" height="22" rx="6" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="825" y="313" fill="#b45309" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Needs Review</text>
+
+  <rect x="910" y="296" width="95" height="26" rx="6" fill="#0284c7"/>
+  <text x="957" y="313" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Review Scan →</text>
+
+  <!-- Case 2 -->
+  <line x1="255" y1="340" x2="1020" y2="340" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="270" y="366" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Amina Bibi (63y)</text>
+  <text x="270" y="380" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9">Scan ID: #SC-9038 • Left Eye (OS)</text>
+
+  <text x="440" y="366" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Glaucoma Suspect</text>
+  <text x="440" y="380" fill="#d97706" font-family="-apple-system, sans-serif" font-size="9" font-weight="bold">Cup-to-Disc 0.74</text>
+
+  <text x="640" y="372" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold">92.8%</text>
+
+  <rect x="780" y="358" width="90" height="22" rx="6" fill="#fef3c7" stroke="#fde68a" stroke-width="1"/>
+  <text x="825" y="373" fill="#b45309" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Needs Review</text>
+
+  <rect x="910" y="356" width="95" height="26" rx="6" fill="#0284c7"/>
+  <text x="957" y="373" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">Review Scan →</text>
+
+  <!-- Case 3 -->
+  <line x1="255" y1="400" x2="1020" y2="400" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="270" y="426" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Rashid Khan (71y)</text>
+  <text x="270" y="440" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9">Scan ID: #SC-9029 • Both Eyes (OU)</text>
+
+  <text x="440" y="426" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Cataract (Grade 2)</text>
+  <text x="440" y="440" fill="#0284c7" font-family="-apple-system, sans-serif" font-size="9" font-weight="bold">Nuclear Sclerosis</text>
+
+  <text x="640" y="432" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold">96.1%</text>
+
+  <rect x="780" y="418" width="90" height="22" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="825" y="433" fill="#059669" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">✓ Signed Off</text>
+
+  <rect x="910" y="416" width="95" height="26" rx="6" fill="#f1f5f9"/>
+  <text x="957" y="433" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">View Notes</text>
+
+  <!-- Case 4 -->
+  <line x1="255" y1="460" x2="1020" y2="460" stroke="#f1f5f9" stroke-width="1"/>
+  <text x="270" y="486" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Fatima Zahra (45y)</text>
+  <text x="270" y="500" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9">Scan ID: #SC-9015 • Routine Screening</text>
+
+  <text x="440" y="486" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Normal Healthy Retina</text>
+  <text x="440" y="500" fill="#059669" font-family="-apple-system, sans-serif" font-size="9" font-weight="bold">No Pathologies</text>
+
+  <text x="640" y="492" fill="#0f172a" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold">98.5%</text>
+
+  <rect x="780" y="478" width="90" height="22" rx="6" fill="#ecfdf5" stroke="#a7f3d0" stroke-width="1"/>
+  <text x="825" y="493" fill="#059669" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">✓ Signed Off</text>
+
+  <rect x="910" y="476" width="95" height="26" rx="6" fill="#f1f5f9"/>
+  <text x="957" y="493" fill="#64748b" font-family="-apple-system, sans-serif" font-size="10" font-weight="600" text-anchor="middle">View Notes</text>
+</svg>

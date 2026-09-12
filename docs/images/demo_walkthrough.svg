@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 560" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#020617"/>
+      <stop offset="50%" stop-color="#042f2e"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <radialGradient id="heat" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.9"/>
+      <stop offset="40%" stop-color="#f97316" stop-opacity="0.8"/>
+      <stop offset="70%" stop-color="#eab308" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="560" fill="url(#bgGrad)" rx="16"/>
+
+  <!-- Top Browser Bar -->
+  <rect width="1000" height="42" fill="#090d16" rx="16 16 0 0"/>
+  <circle cx="28" cy="21" r="6" fill="#ef4444"/>
+  <circle cx="48" cy="21" r="6" fill="#f59e0b"/>
+  <circle cx="68" cy="21" r="6" fill="#10b981"/>
+  <rect x="140" y="10" width="460" height="22" rx="6" fill="#1e293b"/>
+  <text x="155" y="25" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">https://ai-eyecare.vercel.app/ — Explainable Retinal Screening</text>
+  <rect x="860" y="10" width="110" height="22" rx="6" fill="#134e4a"/>
+  <text x="878" y="25" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold">● LIVE DEMO</text>
+
+  <!-- Title & Headline -->
+  <text x="60" y="86" fill="#2dd4bf" font-family="-apple-system, sans-serif" font-size="13" font-weight="bold" letter-spacing="1">CLINICAL OPHTHALMOLOGY AI</text>
+  <text x="60" y="122" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="28" font-weight="bold">Interactive Diagnosis &amp; Video Walkthrough</text>
+  <text x="60" y="148" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="14">Follow retinal fundus scans from capture to deep learning inference, Grad-CAM heatmaps, and doctor review</text>
+
+  <!-- Main Showcase Container -->
+  <rect x="60" y="170" width="880" height="350" rx="16" fill="url(#cardGrad)" stroke="#1e293b" stroke-width="1.5"/>
+
+  <!-- Stage Tabs Header -->
+  <rect x="60" y="170" width="880" height="46" rx="16 16 0 0" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+  <!-- Step 1 -->
+  <rect x="70" y="176" width="200" height="34" rx="8" fill="#1e293b"/>
+  <text x="85" y="198" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">1. Fundus Image Ingestion</text>
+  <!-- Step 2 -->
+  <rect x="280" y="176" width="200" height="34" rx="8" fill="#1e293b"/>
+  <text x="295" y="198" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">2. ResNet50 Neural Scan</text>
+  <!-- Step 3 Active -->
+  <rect x="490" y="176" width="210" height="34" rx="8" fill="#134e4a" stroke="#2dd4bf" stroke-width="1"/>
+  <text x="505" y="198" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="12" font-weight="bold">3. Grad-CAM Attention Map</text>
+  <!-- Step 4 -->
+  <rect x="710" y="176" width="220" height="34" rx="8" fill="#1e293b"/>
+  <text x="725" y="198" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="12">4. Ophthalmologist Review</text>
+
+  <!-- Left: Eyeball Canvas -->
+  <rect x="90" y="240" width="380" height="250" rx="12" fill="#000000" stroke="#334155" stroke-width="1"/>
+  <circle cx="280" cy="365" r="110" fill="#7f1d1d"/>
+  <circle cx="230" cy="365" r="28" fill="#f59e0b"/>
+  <circle cx="230" cy="365" r="14" fill="#fef08a"/>
+  <!-- Blood vessels -->
+  <path d="M 230 365 Q 260 300 320 280 T 380 300" fill="none" stroke="#450a0a" stroke-width="4"/>
+  <path d="M 230 365 Q 270 430 330 450 T 390 430" fill="none" stroke="#450a0a" stroke-width="4"/>
+  <circle cx="320" cy="365" r="16" fill="#2d0502"/>
+  <!-- Grad-CAM Glow -->
+  <circle cx="310" cy="350" r="55" fill="url(#heat)" filter="url(#glow)"/>
+  
+  <rect x="105" y="255" width="130" height="24" rx="6" fill="#000000" fill-opacity="0.75"/>
+  <text x="115" y="271" fill="#2dd4bf" font-family="monospace" font-size="11">Grad-CAM Overlay</text>
+
+  <!-- Right: Clinical Findings Panel -->
+  <rect x="500" y="240" width="410" height="250" rx="12" fill="#090d16" stroke="#1e293b" stroke-width="1"/>
+  
+  <rect x="520" y="260" width="140" height="22" rx="11" fill="#dc2626" fill-opacity="0.2"/>
+  <text x="532" y="275" fill="#f87171" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold">HIGH CONFIDENCE (94.8%)</text>
+  
+  <text x="520" y="312" fill="#ffffff" font-family="-apple-system, sans-serif" font-size="20" font-weight="bold">Diabetic Retinopathy</text>
+  <text x="520" y="332" fill="#2dd4bf" font-family="-apple-system, sans-serif" font-size="12" font-weight="600">Microvascular Lesions in Superior Macular Arcades</text>
+  
+  <!-- Divider -->
+  <line x1="520" y1="346" x2="890" y2="346" stroke="#1e293b" stroke-width="1"/>
+
+  <text x="520" y="368" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">PRIMARY ATTENTION FOCUS:</text>
+  <text x="700" y="368" fill="#e2e8f0" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold">Posterior Pole Arcades</text>
+
+  <text x="520" y="390" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">DECISION EXPLAINABILITY:</text>
+  <text x="700" y="390" fill="#38bdf8" font-family="monospace" font-size="11">Grad-CAM Conv5 Heatmap</text>
+
+  <text x="520" y="412" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">RECOMMENDED ACTION:</text>
+  <text x="700" y="412" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold">Dilated OCT within 14 Days</text>
+
+  <!-- Doctor Stamp -->
+  <rect x="520" y="432" width="370" height="42" rx="8" fill="#042f2e" stroke="#0d9488" stroke-width="1"/>
+  <text x="536" y="452" fill="#5eead4" font-family="-apple-system, sans-serif" font-size="11" font-weight="bold">✓ Verified by Dr. Ahmed Khan, Vitreoretinal Specialist</text>
+  <text x="536" y="466" fill="#99f6e4" font-family="-apple-system, sans-serif" font-size="10">Ophthalmic Decision Support System — Clinical Triage Ready</text>
+</svg>

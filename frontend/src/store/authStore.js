@@ -85,10 +85,7 @@ export const useAuthStore = create((set, get) => ({
   logout: () => {
     localStorage.removeItem('token');
     delete axios.defaults.headers.common['Authorization'];
-    set({ user: null, token: null, isAuthenticated: false });
-    
-    // Replace history to prevent back navigation after logout
-    window.history.replaceState(null, '', '/login');
+    set({ user: null, token: null, isAuthenticated: false, isLoading: false });
   },
 
   // Update profile

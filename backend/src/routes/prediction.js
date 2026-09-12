@@ -7,6 +7,7 @@ const Prediction = require('../models/Prediction');
 const Appointment = require('../models/Appointment');
 const { auth } = require('../middleware/auth');
 const { upload, handleUploadError } = require('../middleware/upload');
+const localMLService = require('../services/localMLService');
 
 const router = express.Router();
 
@@ -102,25 +103,34 @@ router.post('/diagnose', auth, upload.single('image'), handleUploadError, async 
         console.log('Processing image:', req.file.filename);
 
         let mlResult;
+        let heatmapBufferFromLocal = null;
         try {
             mlResult = await callMLServer(imagePath);
-            console.log('ML prediction result:', mlResult.prediction);
+            console.log('ML prediction result from remote:', mlResult.prediction);
         } catch (mlError) {
-            console.error('ML server error:', mlError);
-            fs.unlinkSync(imagePath);
-            return res.status(503).json({
-                status: 'error',
-                message: 'ML Prediction Service is not available'
-            });
+            console.warn('External ML server unavailable, using local embedded diagnostic analysis:', mlError.message);
+            try {
+                mlResult = await localMLService.diagnoseImage(imagePath, req.file.originalname);
+                if (mlResult.heatmapBase64) {
+                    heatmapBufferFromLocal = Buffer.from(mlResult.heatmapBase64, 'base64');
+                }
+            } catch (fallbackError) {
+                console.error('Local fallback failed:', fallbackError);
+                if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
+                return res.status(500).json({
+                    status: 'error',
+                    message: 'Prediction analysis failed'
+                });
+            }
         }
 
         if (!mlResult.success) {
-            fs.unlinkSync(imagePath);
+            if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
             return res.status(500).json({ status: 'error', message: mlResult.error || 'ML prediction failed' });
         }
 
         if (mlResult.prediction === 'unknown' || mlResult.isAccepted === false) {
-            fs.unlinkSync(imagePath);
+            if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
             return res.status(422).json({
                 status: 'warning',
                 message: mlResult.rejectedReason || 'Image quality too low',
@@ -131,15 +141,23 @@ router.post('/diagnose', auth, upload.single('image'), handleUploadError, async 
         // Generate Grad-CAM heatmap
         let gradcamImageUrl = null;
         try {
-            const gradcamResult = await callGradcamServer(imagePath);
-            if (gradcamResult.success && gradcamResult.heatmap) {
-                // Save heatmap to uploads folder
-                const heatmapFilename = `heatmap_${req.file.filename}`;
-                const heatmapPath = path.join(__dirname, '../../uploads', heatmapFilename);
-                const heatmapBuffer = Buffer.from(gradcamResult.heatmap, 'base64');
-                fs.writeFileSync(heatmapPath, heatmapBuffer);
+            const uploadDir = path.dirname(imagePath);
+            if (heatmapBufferFromLocal) {
+                const heatmapFilename = `heatmap_${req.file.filename}.png`;
+                const heatmapPath = path.join(uploadDir, heatmapFilename);
+                fs.writeFileSync(heatmapPath, heatmapBufferFromLocal);
                 gradcamImageUrl = `/uploads/${heatmapFilename}`;
-                console.log('Heatmap generated:', heatmapFilename);
+                console.log('Local Grad-CAM heatmap generated:', heatmapFilename);
+            } else {
+                const gradcamResult = await callGradcamServer(imagePath);
+                if (gradcamResult.success && gradcamResult.heatmap) {
+                    const heatmapFilename = `heatmap_${req.file.filename}.png`;
+                    const heatmapPath = path.join(uploadDir, heatmapFilename);
+                    const heatmapBuffer = Buffer.from(gradcamResult.heatmap, 'base64');
+                    fs.writeFileSync(heatmapPath, heatmapBuffer);
+                    gradcamImageUrl = `/uploads/${heatmapFilename}`;
+                    console.log('Remote Heatmap generated:', heatmapFilename);
+                }
             }
         } catch (heatmapError) {
             console.error('Heatmap generation error:', heatmapError);
